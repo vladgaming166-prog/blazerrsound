@@ -1,0 +1,95 @@
+{
+  "name": "soundblazerr",
+  "productName": "SoundBlazerr",
+  "version": "1.0.0",
+  "description": "SoundBlazerr — premium Windows soundboard with real audio routing and global shortcuts.",
+  "author": "SoundBlazerr",
+  "license": "MIT",
+  "main": "electron/main.js",
+  "homepage": "./",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && cross-env ELECTRON_START_URL=http://localhost:5173 electron .\"",
+    "start": "electron .",
+    "build": "vite build",
+    "package": "vite build && electron-builder --win --x64",
+    "package:dir": "vite build && electron-builder --win --x64 --dir"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "cross-env": "^7.0.3",
+    "electron": "^34.3.0",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.1",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.soundblazerr.app",
+    "productName": "SoundBlazerr",
+    "copyright": "Copyright © SoundBlazerr",
+    "asar": true,
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "files": [
+      "electron/**/*",
+      "out/**/*",
+      "assets/icon.png",
+      "assets/icon.ico",
+      "assets/test-tone.wav",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/test-tone.wav",
+        "to": "test-tone.wav"
+      }
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "artifactName": "${productName}-${version}.${ext}"
+    },
+    "nsis": {
+      "artifactName": "SoundBlazerr-Setup.exe",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SoundBlazerr",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "deleteAppDataOnUninstall": false
+    },
+    "portable": {
+      "artifactName": "SoundBlazerr.exe"
+    },
+    "protocols": [
+      {
+        "name": "SoundBlazerr",
+        "schemes": ["soundblazerr"]
+      }
+    ]
+  }
+}

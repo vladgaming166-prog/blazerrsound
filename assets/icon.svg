@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="SoundBlazerr">
+  <defs>
+    <linearGradient id="bolt" x1="70" y1="28" x2="186" y2="228" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B6FFC8"/>
+      <stop offset="0.45" stop-color="#39FF72"/>
+      <stop offset="1" stop-color="#1DB954"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="#0B0F0C"/>
+  <g fill="none" stroke="#39FF72" stroke-width="10" stroke-linecap="round" opacity="0.55">
+    <path d="M78 86c-22 22-34 48-34 70"/>
+    <path d="M64 74c-30 30-46 64-46 92" opacity="0.7"/>
+    <path d="M90 100c-14 16-22 34-22 52"/>
+    <path d="M178 86c22 22 34 48 34 70"/>
+    <path d="M192 74c30 30 46 64 46 92" opacity="0.7"/>
+    <path d="M166 100c14 16 22 34 22 52"/>
+  </g>
+  <path filter="url(#glow)" fill="url(#bolt)" d="M148 28L68 142h56l-18 86 92-128h-58l26-72z"/>
+</svg>
